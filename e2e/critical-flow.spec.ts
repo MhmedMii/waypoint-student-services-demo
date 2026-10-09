@@ -40,10 +40,14 @@ test('generated applications, local tracking, and simulated payment', async ({ p
 test('production APIs stay disabled and demo traffic stays on its own origin', async ({
   page,
   request,
+  baseURL,
 }) => {
   const external: string[] = []
+  const applicationOrigin = new URL(baseURL!).origin
   page.on('request', (req) => {
-    if (!new URL(req.url()).hostname.includes('127.0.0.1')) external.push(req.url())
+    const url = new URL(req.url())
+    if (['http:', 'https:'].includes(url.protocol) && url.origin !== applicationOrigin)
+      external.push(url.origin)
   })
   await page.goto('/admin')
   await expect(

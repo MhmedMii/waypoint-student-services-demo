@@ -4,6 +4,8 @@ A redesigned education consultancy workspace with **fictional people and working
 
 Built by [MhmedMii](https://github.com/MhmedMii).
 
+**[Try the public demo](https://waypoint-student-services-demo.vercel.app)** · **[Explore the source](https://github.com/MhmedMii/waypoint-student-services-demo)**
+
 ![Waypoint fictional workspace](docs/screenshots/overview.png)
 
 ## Run locally
@@ -67,6 +69,12 @@ Browser checks:
 ```bash
 npx playwright install chromium
 npm run test:e2e
+```
+
+To run the same browser checks against the public demo:
+
+```bash
+DEMO_BASE_URL=https://waypoint-student-services-demo.vercel.app npm run test:e2e
 ```
 
 Historical database integration tests skip without `DATABASE_URL`; the demo’s isolation, state transitions, and browser flows have separate tests that need no database.
