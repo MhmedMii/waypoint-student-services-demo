@@ -21,6 +21,48 @@ Built by [MhmedMii](https://github.com/MhmedMii).
 - **Management:** explore fictional accounts, team availability, activity logs, and Excel reports.
 - **Arabic and English:** switch languages, with right-to-left layouts, light/dark themes, and mobile support.
 
+## Try the workflows
+
+### Register and serve a student
+
+1. Open [the front desk](https://waypoint-student-services-demo.vercel.app/intake).
+2. Choose a generated identity and a visit type. For a first visit, choose a study destination.
+3. Register the demo visit, then open the counselor desk.
+4. Select the assigned demo counselor and click **Start next visit**.
+5. Finish the session as completed or requiring a follow-up. The next session starts only after another explicit click.
+6. Check the visit list and activity timeline to see the resulting changes.
+
+### Submit and review an application
+
+1. Open [the applicant experience](https://waypoint-student-services-demo.vercel.app/apply).
+2. Choose a visa or exam service, then a fictional student identity.
+3. Attach generated sample documents and submit.
+4. Open the tracking link or inspect the application in the staff view.
+5. Move it through the allowed review stages and try **Simulate payment**.
+
+Use **Reset demo** to restore the starter records at any time. Changes persist when reloading the same browser, but they are not shared with other visitors or devices.
+
+### Routes
+
+| **Route**                                  | **View**                               |
+| ------------------------------------------ | -------------------------------------- |
+| `/`, `/admin`                              | Workspace overview                     |
+| `/login`                                   | Demo welcome and perspective selection |
+| `/intake`                                  | Front-desk registration                |
+| `/admin/visits`                            | Student visits                         |
+| `/counselor`                               | Counselor sessions and breaks          |
+| `/counselor/students`                      | Assigned student visits                |
+| `/visas`, `/exams`                         | Service application lists              |
+| `/apply`                                   | Fictional applicant flow               |
+| `/apply/status/WP-2401`                    | Example application tracking page      |
+| `/admin/supervision`, `/admin/online-now`  | Simulated team overview                |
+| `/admin/accounts`                          | Fictional account management           |
+| `/admin/activity`, `/admin/online-history` | Demo event timeline                    |
+| `/admin/qr-poster`, `/apply/qr-poster`     | Printable demo QR posters              |
+| `/api/health`                              | Demo health response                   |
+
+The retained `/forgot-password` and `/reset-password` routes show the demo welcome view. Real password recovery is not active.
+
 ## 🎨 Design
 
 A connected-path logo, deep teal and ivory palette, and clear tables keep the workspace focused on the next action. Manrope supports the English interface; Noto Sans Arabic supports Arabic.
