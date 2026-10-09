@@ -1,0 +1,591 @@
+/* activity-log.css — لوحة سجل النشاط: قائمة مجمّعة بالأيام + صفحة تفاصيل كاملة عند الاختيار */
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* توكنز محلية للوحة بس — ما نلمس theme-colors.css. الخلفيات الناعمة تحتاج
+   قيم مختلفة بالوضع الداكن عشان تبان فوق السطح الكحلي */
+.activity-panel {
+  --activity-avatar-bg: var(--navy);
+  --activity-avatar-ink: #ffffff;
+  --activity-success-soft: rgba(31, 122, 77, 0.12);
+  --activity-warning-soft: rgba(181, 121, 10, 0.12);
+  --activity-danger-soft: rgba(178, 58, 58, 0.12);
+  --activity-orange-soft: rgba(234, 105, 45, 0.12);
+}
+:root[data-theme='dark'] .activity-panel {
+  --activity-avatar-bg: #2e5a8c;
+  --activity-success-soft: rgba(79, 190, 134, 0.14);
+  --activity-warning-soft: rgba(227, 185, 91, 0.14);
+  --activity-danger-soft: rgba(228, 114, 111, 0.14);
+  --activity-orange-soft: rgba(240, 130, 76, 0.14);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .activity-panel {
+    --activity-avatar-bg: #2e5a8c;
+    --activity-success-soft: rgba(79, 190, 134, 0.14);
+    --activity-warning-soft: rgba(227, 185, 91, 0.14);
+    --activity-danger-soft: rgba(228, 114, 111, 0.14);
+    --activity-orange-soft: rgba(240, 130, 76, 0.14);
+  }
+}
+
+/* ---- رأس اللوحة ---- */
+.activity-panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px 14px;
+  margin-bottom: 16px;
+}
+.activity-panel-head h3 {
+  margin: 0;
+}
+.activity-subtitle {
+  margin: 4px 0 0;
+  font-size: 12.5px;
+  color: var(--text-faint);
+  max-width: 60ch;
+}
+.activity-export {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  border-radius: 8px;
+  padding: 8px 13px;
+  font:
+    600 11.5px/1 var(--font-inter),
+    sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.activity-export:hover {
+  color: var(--text);
+  border-color: var(--text-faint);
+}
+
+/* ---- شريط الفلاتر: بحث + قوائم مختصرة ---- */
+.activity-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.activity-toolbar select,
+.activity-search {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 11px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 12.5px;
+}
+.activity-search {
+  flex: 1;
+  min-width: 170px;
+}
+.activity-clear {
+  border: none;
+  background: transparent;
+  color: var(--orange-deep);
+  font:
+    600 12px/1 var(--font-inter),
+    sans-serif;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 6px 4px;
+}
+.activity-count {
+  margin-inline-start: auto;
+  font:
+    500 11px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- القائمة: صفوف مجمّعة بالأيام، بدون لمّ ولا عمود جانبي دائم ---- */
+.activity-list:focus {
+  outline: none;
+}
+.activity-day {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0 8px;
+  font:
+    600 10px/1 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.activity-day-group:first-child .activity-day {
+  margin-top: 0;
+}
+.activity-day::after {
+  content: '';
+  height: 1px;
+  background: var(--border);
+  flex: 1;
+}
+
+.activity-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 13px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--surface);
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(20, 29, 41, 0.04);
+  transition: border-color 0.15s;
+}
+.activity-row + .activity-row {
+  margin-top: 7px;
+}
+.activity-row:hover {
+  border-color: var(--orange);
+}
+.activity-row.is-selected {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 1px var(--orange);
+}
+.activity-row:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.activity-row-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+  background: var(--border);
+}
+.activity-row-dot.privilege {
+  background: var(--warning);
+}
+.activity-row-dot.destructive {
+  background: var(--danger);
+}
+
+.activity-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  font:
+    600 10.5px/1 var(--font-inter),
+    sans-serif;
+  color: var(--activity-avatar-ink);
+  background: var(--activity-avatar-bg);
+}
+.activity-avatar-lg {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  font-size: 14px;
+}
+
+.activity-row-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.activity-row-line {
+  font-size: 13px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.activity-row-meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: var(--text-faint);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.activity-target-chip {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font:
+    600 9.5px/1.4 var(--font-inter),
+    sans-serif;
+  text-transform: capitalize;
+  color: var(--text-muted);
+}
+.activity-row-time {
+  font:
+    500 11px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text-faint);
+  flex: none;
+}
+/* السقف قطع الفترة — نفس شكل .visits-search-truncated: تحذير هادئ، مو خطأ.
+   اللي ظاهر صحيح، بس ناقص */
+.activity-capped {
+  margin: 0 0 12px;
+  font:
+    600 12px/1.4 var(--font-inter),
+    sans-serif;
+  color: var(--warning);
+}
+.activity-boundary {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+/* ---- صفحة التفاصيل الكاملة — تحل محل القائمة عند اختيار حدث ---- */
+.activity-back {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-bottom: 16px;
+  font:
+    600 12px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text-faint);
+}
+.activity-back:hover {
+  color: var(--text);
+}
+
+.activity-ev-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-bottom: 18px;
+}
+.activity-ev-title h4 {
+  font:
+    700 16px/1.35 var(--font-inter),
+    sans-serif;
+  margin: 0;
+}
+.activity-detail-when {
+  font:
+    500 11px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text-faint);
+  margin: 4px 0 0;
+}
+.activity-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font:
+    700 11px/1 var(--font-inter),
+    sans-serif;
+  border: 1px solid transparent;
+  margin-inline-start: auto;
+  flex: none;
+}
+.activity-chip.routine {
+  color: var(--success);
+  background: var(--activity-success-soft);
+  border-color: var(--success);
+}
+.activity-chip.privilege {
+  color: var(--warning);
+  background: var(--activity-warning-soft);
+  border-color: var(--warning);
+}
+.activity-chip.destructive {
+  color: var(--danger);
+  background: var(--activity-danger-soft);
+  border-color: var(--danger);
+}
+
+.activity-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.activity-detail-card {
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--surface);
+  padding: 15px;
+}
+.activity-full-card {
+  grid-column: 1 / -1;
+}
+.activity-card-lab {
+  font:
+    600 9.5px/1 var(--font-inter),
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  margin-bottom: 11px;
+}
+.activity-who-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.activity-who-name {
+  font:
+    700 13px/1.3 var(--font-inter),
+    sans-serif;
+}
+.activity-who-role {
+  font:
+    500 11px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text-faint);
+  margin-top: 2px;
+}
+
+.activity-kv {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 9px 14px;
+  font-size: 12.5px;
+  align-items: baseline;
+  margin: 0;
+}
+.activity-kv dt {
+  font:
+    600 9px/1.4 var(--font-inter),
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+}
+.activity-kv dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.activity-kv dd code {
+  font-size: 0.9em;
+}
+
+.activity-recorded-text {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 13px 15px;
+  font-size: 12.5px;
+  color: var(--text);
+  line-height: 1.6;
+}
+.activity-recorded-src {
+  display: block;
+  margin-top: 8px;
+  font:
+    500 10.5px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text-faint);
+}
+
+.activity-timeline-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.activity-tl-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding-bottom: 11px;
+  position: relative;
+}
+.activity-tl-item:last-child {
+  padding-bottom: 0;
+}
+.activity-tl-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  flex: none;
+  margin-top: 4px;
+  box-shadow: 0 0 0 1px var(--border);
+}
+.activity-tl-item.now .activity-tl-dot {
+  background: var(--orange);
+  box-shadow: 0 0 0 1px var(--orange);
+}
+.activity-tl-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 3.5px;
+  top: 13px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+.activity-tl-body {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.activity-tl-time {
+  display: block;
+  font:
+    500 10.5px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text-faint);
+  margin-bottom: 2px;
+}
+.activity-tl-item.now .activity-tl-body {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.activity-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.activity-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font:
+    600 12.5px/1 var(--font-inter),
+    sans-serif;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+.activity-btn.primary {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(234, 105, 45, 0.3);
+}
+.activity-btn.primary:hover {
+  background: var(--orange-hover);
+}
+.activity-btn.secondary {
+  background: var(--surface);
+  color: var(--text-muted);
+  border-color: var(--border);
+}
+.activity-target-gone {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+/* ---- الحالات: تحميل، فاضي، فاضي بعد فلترة، خطأ ---- */
+.activity-state {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: flex-start;
+}
+.activity-state.is-error {
+  border-color: var(--danger);
+}
+.activity-state strong {
+  font:
+    700 13.5px/1.3 var(--font-inter),
+    sans-serif;
+  color: var(--text);
+}
+.activity-state-msg {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin: 0;
+}
+.activity-skeleton {
+  display: block;
+  height: 9px;
+  border-radius: 4px;
+  background: var(--surface-2);
+}
+.activity-skeleton.w90 {
+  width: 90%;
+}
+.activity-skeleton.w75 {
+  width: 75%;
+}
+.activity-skeleton.w60 {
+  width: 60%;
+}
+.activity-skeleton.w40 {
+  width: 40%;
+}
+.activity-retry {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 7px 13px;
+  font:
+    600 11.5px/1 var(--font-inter),
+    sans-serif;
+}
+
+@media (max-width: 900px) {
+  .activity-count {
+    margin-inline-start: 0;
+  }
+  .activity-row-meta .activity-target-chip {
+    display: none;
+  }
+}
+
+/* ---- شريط "سجل واحد" بصفحة الزيارات لما نجي من سجل النشاط ---- */
+.focus-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  border: 1px solid var(--orange);
+  border-radius: 10px;
+  background: var(--activity-orange-soft, rgba(234, 105, 45, 0.12));
+  font-size: 12.5px;
+  color: var(--text);
+}
+.focus-banner a {
+  margin-inline-start: auto;
+  color: var(--orange-deep);
+  font:
+    600 12px/1 var(--font-inter),
+    sans-serif;
+}
+
+/* ---- اختيار العميل لمستشار غائب: الأحمر على عدد الأيام فقط ----
+   الجملة محفوظة نص عادي بقاعدة البيانات، فاللوحة تقسمها على آخر " — "
+   وتلوّن الذيل. ما فيه فاصل؟ تنعرض كاملة بدون تلوين */
+.activity-row-dot.absent-choice {
+  background: var(--danger);
+}
+.activity-detail-absent {
+  color: var(--danger);
+  font-weight: 600;
+}

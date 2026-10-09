@@ -1,0 +1,131 @@
+/* theme-colors.css — light/dark color variables (brand tokens) and base page resets */
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #eef0f3;
+  --text: #1c1c1c;
+  --text-muted: #5b6068;
+  --text-faint: #8a8f98;
+  --border: #dadde2;
+  --navy: #1a3659;
+  --navy-deep: #12283f;
+  --orange: #ea692d;
+  /* حبر: يقف على سطح ويُقرأ */
+  --orange-deep: #c8541f;
+  /* حشوة تحت نص أبيض — مهمة ثانية تمامًا عن الحبر: الحبر يبي يفتح بالوضع
+     الغامق، والحشوة تحت نص أبيض تبي تغمق. قيمة وحدة ما تخدم الاثنين، فصارا
+     توكنين. نفس سبب فصل عتبتي الغياب: سؤالان، فرقمان */
+  --orange-hover: #a04210;
+  /* دائرة الحرفين بصفوف الحضور. كانت تاخذ --navy، و--navy ثابت لأنه خلفية
+     البوستر المطبوع — فبالغامق تطلع كحلي على كحلي والدائرة تختفي تحت حروفها */
+  --avatar-bg: #1a3659;
+  --success: #1f7a4d;
+  --warning: #b5790a;
+  --danger: #b23a3a;
+  /* حبة الشفت — نفس لوني صفحة الحسابات. النقطة ثابتة بالثيمين عشان الصفحتين
+     يقروا كعائلة وحدة، بس الخلفية والنص لازم ينعرّفوا لكل ثيم: قبل كذا كان
+     الليلي ياخذ --navy اللي ما له قيمة إلا بالفاتح، فيطلع كحلي على كحلي */
+  --shift-day-dot: #e3b95b;
+  --shift-night-dot: #4a6fa5;
+  --shift-day-bg: #faf2e0;
+  --shift-day-border: #ecd9a8;
+  --shift-day-fg: #8a6a1f;
+  --shift-night-bg: #e8eef7;
+  --shift-night-border: #c3d2e8;
+  --shift-night-fg: #2f4c78;
+}
+:root[data-theme='dark'] {
+  --bg: #0e1e33;
+  --surface: #16304d;
+  --surface-2: #1d3b5c;
+  --text: #edeff3;
+  --text-muted: #b7c0cc;
+  --text-faint: #8fa0b4;
+  --border: #2a4666;
+  --orange: #f0824c;
+  --orange-deep: #f59a6b;
+  --orange-hover: #a04210;
+  --avatar-bg: #33608f;
+  --success: #4fbe86;
+  --warning: #e3b95b;
+  --danger: #e4726f;
+  --shift-day-bg: #3a2f16;
+  --shift-day-border: #6b5622;
+  --shift-day-fg: #e3b95b;
+  --shift-night-bg: #1b2e4a;
+  --shift-night-border: #3c5d8c;
+  --shift-night-fg: #8fb0dd;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0e1e33;
+    --surface: #16304d;
+    --surface-2: #1d3b5c;
+    --text: #edeff3;
+    --text-muted: #b7c0cc;
+    --text-faint: #8fa0b4;
+    --border: #2a4666;
+    --orange: #f0824c;
+    --orange-deep: #f59a6b;
+    --orange-hover: #a04210;
+    --avatar-bg: #33608f;
+    --success: #4fbe86;
+    --warning: #e3b95b;
+    --danger: #e4726f;
+    --shift-day-bg: #3a2f16;
+    --shift-day-border: #6b5622;
+    --shift-day-fg: #e3b95b;
+    --shift-night-bg: #1b2e4a;
+    --shift-night-border: #3c5d8c;
+    --shift-night-fg: #8fb0dd;
+  }
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    var(--font-poppins),
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1,
+h2,
+h3 {
+  font-family:
+    var(--font-inter),
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  margin: 0;
+}
+[dir='rtl'] body,
+[dir='rtl'] h1,
+[dir='rtl'] h2,
+[dir='rtl'] h3 {
+  font-family: var(--font-cairo), sans-serif;
+}
+/* سهم اتجاهي واحد (رجوع/فتح) نستخدمه بأكثر من مكان — بالعربي نعكسه بصرياً بدل
+   ما نكتب شرط لغة بكل مكان يستخدمه */
+.dir-arrow {
+  display: inline-block;
+}
+[dir='rtl'] .dir-arrow {
+  transform: scaleX(-1);
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+input,
+select {
+  font-family: inherit;
+  font-size: 15px;
+}

@@ -1,0 +1,242 @@
+/* sidebar-and-page-layout.css — dark/light + language toggle button, the role-aware sidebar, and shared page shells */
+
+/* ---- Global dark/light mode + language toggles ---- */
+.toggle-bar {
+  position: fixed;
+  top: 12px;
+  inset-inline-end: 12px;
+  z-index: 50;
+  display: flex;
+  gap: 8px;
+}
+/* زر واحد يعرض بس الحالة الحالية، كبسه يبدلها — بدل صف فيه خيارين */
+.toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 9px 12px;
+  font:
+    600 12px/1 var(--font-inter),
+    sans-serif;
+}
+.toggle-btn-icon {
+  font-size: 14px;
+}
+.toggle-btn:hover {
+  background: var(--surface-2);
+}
+
+/* ---- Role-aware sidebar ---- */
+.app-sidebar {
+  position: fixed;
+  top: 0;
+  inset-inline-start: 0;
+  bottom: 0;
+  width: 200px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px;
+  background: var(--surface);
+  border-inline-end: 1px solid var(--border);
+}
+/* زر فتح القائمة والخلفية المعتمة — يبانون بالموبايل بس (شوف الميديا كويري تحت) */
+.sidebar-toggle-btn {
+  display: none;
+  position: fixed;
+  top: 12px;
+  inset-inline-start: 12px;
+  z-index: 71;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 18px;
+}
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 60;
+}
+.app-sidebar-brand {
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.app-sidebar-brand canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.app-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.app-sidebar-nav a {
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: var(--text-muted);
+  font:
+    600 13px/1 var(--font-inter),
+    sans-serif;
+  text-decoration: none;
+}
+.app-sidebar-nav a.active {
+  background: var(--orange);
+  color: #fff;
+}
+.app-sidebar-nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.app-sidebar-nav-sub {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-inline-start: 12px;
+  padding-inline-start: 12px;
+  border-inline-start: 1px solid var(--border);
+}
+.app-sidebar-nav-sub a {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.app-sidebar-nav-sub a.active {
+  background: var(--surface-2);
+  color: var(--orange-deep);
+}
+.app-sidebar-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+.app-sidebar-profile .name {
+  font:
+    600 13px/1.3 var(--font-inter),
+    sans-serif;
+  color: var(--text);
+}
+.name-edit-trigger {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  text-align: start;
+}
+.name-edit-trigger .edit-hint {
+  font:
+    500 10px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text-faint);
+  text-decoration: underline;
+}
+.name-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.name-edit-form input {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font:
+    600 13px/1.3 var(--font-inter),
+    sans-serif;
+}
+.name-edit-actions {
+  display: flex;
+  gap: 6px;
+}
+.name-edit-actions button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font:
+    600 11px/1 var(--font-inter),
+    sans-serif;
+}
+.app-sidebar-profile .role {
+  font:
+    600 10.5px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text-faint);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.app-sidebar-toggles {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.app-sidebar-toggles .toggle-btn {
+  flex: 1;
+}
+.app-sidebar-signout {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--danger);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font:
+    600 13px/1 var(--font-inter),
+    sans-serif;
+}
+
+/* ---- Shared page shells ---- */
+/* الفلكس هنا يتمركز داخل المساحة المتبقية بعد السايدبار — أدق وأثبت
+   من حسابات vw اللي تتأثر بعرض شريط التمرير */
+.app-content {
+  display: flex;
+  justify-content: center;
+  padding-inline-start: 200px;
+  width: 100%;
+}
+.screen-intake,
+.screen-counselor,
+.screen-dash {
+  width: 100%;
+  min-height: 100vh;
+  max-width: 720px;
+  padding: 76px 16px 48px;
+}
+.screen-dash {
+  max-width: 1600px;
+}
+/* شاشة الاستقبال (كشك) والمستشار (المؤقت) نتمركز فيهم عمودياً كمان —
+   محتواهم بطاقة وحدة مو قائمة تكبر، عكس صفحات الأدمن */
+.screen-intake,
+.screen-counselor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.screen-intake {
+  margin-inline: auto;
+  padding-top: 24px;
+}

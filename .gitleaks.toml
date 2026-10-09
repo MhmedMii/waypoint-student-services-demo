@@ -1,0 +1,12 @@
+# إعداد فحص الأسرار. نبني على القواعد الافتراضية ونستثني بس القيم الوهمية
+# المستخدمة بقاعدة بيانات الاختبار داخل e2e.yml — استثناء بالقيمة نفسها مو
+# بالملف، عشان لو انحط سر حقيقي بنفس الملف يظل ينمسك.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Throwaway values used only against the disposable CI database"
+regexes = [
+  '''test-encryption-key-32-bytes-lon''',
+  '''test-secret-do-not-use-in-production''',
+]

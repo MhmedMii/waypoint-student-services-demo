@@ -1,0 +1,19 @@
+# Publish application code and generated assets only.
+.git/
+.next/
+node_modules/
+.env*
+!.env.example
+coverage/
+test-results/
+playwright-report/
+docs/
+e2e/
+**/*.test.ts
+**/*.test.tsx
+uploads/
+backups/
+*.dump
+*.backup
+*.bak
+*.log

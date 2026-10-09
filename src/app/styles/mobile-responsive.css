@@ -1,0 +1,176 @@
+/* mobile-responsive.css — the @media breakpoints, imported last so they can override the base rules above */
+@media (max-width: 640px) {
+  .kpi-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .date-range-row label {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 0;
+  }
+  .date-range-row .date-range-export {
+    flex: 1 1 100%;
+    margin-inline-start: 0;
+    justify-content: center;
+  }
+  .bar-row {
+    grid-template-columns: 96px 1fr 30px;
+    gap: 8px;
+  }
+  .type-tabs {
+    flex-wrap: wrap;
+  }
+  .counselor-actions,
+  .break-controls {
+    flex-direction: column;
+  }
+  .stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .status-pick-grid {
+    grid-template-columns: 1fr;
+  }
+  .page-header {
+    flex-wrap: wrap;
+  }
+  .sort-row-mobile {
+    display: flex;
+  }
+  .toggle-bar {
+    top: 8px;
+    inset-inline-end: 8px;
+  }
+  /* بالموبايل السايدبار يصير قائمة منسدلة (off-canvas) مو عمود ثابت يوكل
+     ثلث الشاشة — يبان بس لما تدوس زر ☰ */
+  .sidebar-toggle-btn {
+    display: block;
+  }
+  .sidebar-backdrop {
+    display: block;
+  }
+  .app-sidebar {
+    width: 240px;
+    max-width: 78vw;
+    padding: 20px 16px;
+    z-index: 70;
+    transform: translateX(-100%);
+    /* مسحوب برّا الشاشة بس ما يكفي: روابطه كانت تنوصل بـ Tab وقارئ الشاشة يقراها
+       وهي مو ظاهرة. visibility تشيله من الاثنين — ومتأخرة لين يخلص الانزلاق،
+       فالحركة نفسها ما تتغير */
+    visibility: hidden;
+    transition:
+      transform 0.22s ease,
+      visibility 0s linear 0.22s;
+  }
+  [dir='rtl'] .app-sidebar {
+    transform: translateX(100%);
+  }
+  .app-sidebar.open {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.22s ease;
+  }
+  .app-content {
+    padding-inline-start: 0;
+  }
+  .screen-counselor,
+  .screen-dash {
+    padding-inline: 10px;
+  }
+  .screen-intake {
+    padding-inline: 10px;
+  }
+  .stopwatch-time {
+    font-size: 34px;
+  }
+  /* الفراغ 48px بين شعار/كرت/فوتر شاشة الدخول يخلي المحتوى أطول من
+     الشاشة بالموبايل فيحتاج سكرول — نضيقه هنا بس */
+  .login-screen {
+    min-height: 100dvh;
+    gap: 20px;
+    padding: 16px;
+  }
+  .login-logo {
+    padding: 18px 24px;
+  }
+  .login-card {
+    padding: 22px 20px;
+  }
+
+  /* جداول الأدمن (حسابات، زيارات، سجل النشاط، أداء المستشارين) تصير
+     بطاقات مكدّسة بالموبايل بدل جدول أفقي مقصوص — كل صف بطاقة، وكل
+     خلية توّه اسم عمودها فوقها */
+  .screen-dash table {
+    display: block;
+    width: 100%;
+    border: none;
+    background: transparent;
+  }
+  .screen-dash thead {
+    display: none;
+  }
+  .screen-dash tbody {
+    display: block;
+  }
+  .screen-dash tr {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px 12px;
+    margin-bottom: 10px;
+  }
+  .screen-dash tr:last-child {
+    margin-bottom: 0;
+  }
+  .screen-dash td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    text-align: end;
+  }
+  .screen-dash tr:last-child td:last-child {
+    border-bottom: none;
+  }
+  .screen-dash td::before {
+    content: attr(data-label);
+    flex-shrink: 0;
+    font:
+      600 10.5px/1 var(--font-inter),
+      sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    text-align: start;
+  }
+  .screen-dash td.cell-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+  .screen-dash td.cell-actions::before {
+    display: none;
+  }
+  .screen-dash td.cell-actions button {
+    width: 100%;
+    margin-inline-end: 0;
+  }
+  .screen-dash td.cell-full {
+    display: block;
+  }
+  .screen-dash td.cell-full::before {
+    display: none;
+  }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  .kpi-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1025px) {
+  .kpi-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -1,0 +1,1300 @@
+/* admin-tables-and-lists.css — the shared admin table look (Accounts/Visits/Activity),
+   the account-creation form, student cards, and the inline status/assign editors */
+
+.accounts-table button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font:
+    600 11.5px/1 var(--font-inter),
+    sans-serif;
+  margin-inline-end: 4px;
+}
+.accounts-table button.action-success {
+  border-color: var(--success);
+  background: rgba(31, 122, 77, 0.12);
+  color: var(--success);
+}
+.accounts-table button.action-warning {
+  border-color: var(--warning);
+  background: rgba(181, 121, 10, 0.12);
+  color: var(--warning);
+}
+.accounts-table button.action-danger {
+  border-color: var(--danger);
+  background: rgba(178, 58, 58, 0.12);
+  color: var(--danger);
+}
+.accounts-table button.action-shift {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: var(--orange);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font:
+    600 11.5px/1 var(--font-inter),
+    sans-serif;
+  box-shadow: 0 2px 8px rgba(234, 105, 45, 0.35);
+  margin-inline-end: 4px;
+}
+.accounts-table button.action-shift:hover {
+  background: var(--orange-hover);
+}
+.visit-assign-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.visit-assign-cell select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font:
+    600 11.5px/1 var(--font-inter),
+    sans-serif;
+}
+.counselor-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.counselor-cell select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font:
+    600 11.5px/1 var(--font-inter),
+    sans-serif;
+}
+.counselor-name {
+  font:
+    600 12px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text);
+}
+/* الاسم وزر الإلغاء بسطر واحد. قبل كذا كانت الشارة أعرض من العمود فتلف،
+   وتدفع الزر لسطر ثالث بعيد عن الاسم اللي يخصه — سهل تضغطه على صف غلط */
+.counselor-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.counselor-line .counselor-name {
+  flex: 1;
+  min-width: 0;
+}
+/* سطر تحت الاسم، بدون خلفية: ملاحظة مو إنذار — وهي كمان اللي كانت تكسر العمود */
+.counselor-away {
+  display: block;
+  margin-top: 3px;
+  font:
+    500 10.5px/1.35 var(--font-inter),
+    sans-serif;
+  color: var(--text-faint);
+}
+/* أحمر يعني شي محدد: التوزيع وقف يعطيه عملاء جدد عند خمسة أيام دوام */
+.counselor-away.absent {
+  color: var(--danger);
+}
+/* ٢٤ = أصغر هدف لمس تسمح فيه WCAG 2.2 (2.5.8). كان ٢٠ */
+.unassign-x {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-faint);
+  font:
+    700 11px/1 var(--font-inter),
+    sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+.unassign-x:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+.th-sortable {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.th-sortable:hover {
+  color: var(--orange);
+}
+.sort-row-mobile {
+  display: none;
+}
+
+.date-range-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+/* أي زر export-btn داخل هذا الصف يفقد الهامش الرأسي الافتراضي (16px 0)
+   المصمم أصلاً لزر يقف لحاله بقسمه الخاص — هنا لازم يصطف بارتفاع باقي الصف */
+.date-range-row .export-btn {
+  margin-block: 0;
+}
+.date-range-row .date-range-export {
+  margin-inline-start: auto;
+}
+.applications-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.date-range-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font:
+    600 11px/1 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.date-range-row input[type='date'],
+.date-range-row select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font:
+    600 13px/1 var(--font-inter),
+    sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.sort-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.sort-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font:
+    600 11px/1 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.sort-row select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font:
+    600 13px/1 var(--font-inter),
+    sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.dir-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font:
+    700 12px/1 var(--font-inter),
+    sans-serif;
+  cursor: pointer;
+}
+.dir-btn:hover {
+  border-color: var(--orange);
+}
+.dir-btn .arrow {
+  color: var(--orange-deep);
+  font-weight: 800;
+}
+
+.screen-dash table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+/* عمود الإجراءات بجدول الحسابات كان ياخذ عرض تلقائي واسع جداً فيصير فراغ ميت
+   قبل الأزرار — نثبت عرض الأعمدة بدل ما نخليها تلقائية */
+.accounts-table {
+  table-layout: fixed;
+}
+.accounts-table td {
+  overflow-wrap: break-word;
+}
+/* بدون min-width الجدول ينضغط ويصير الهيدر والأزرار فوق بعض بأي عرض متوسط —
+   نخليه ياخذ عرضه الطبيعي وtable-wrap يتكفل بالسكرول الأفقي. مقصور على
+   العرض اللي فوق نقطة تحويل الجدول لبطاقات (640px) عشان ما يكسر وضع البطاقات */
+@media (min-width: 641px) {
+  .visits-table {
+    min-width: 1150px;
+  }
+}
+.applications-merged-row td {
+  background: rgba(234, 105, 45, 0.06);
+}
+.dim {
+  color: var(--text-faint);
+}
+.presence-table {
+  table-layout: fixed;
+}
+.history-row td:nth-child(2),
+.history-row td:nth-child(3),
+.history-row td:nth-child(4) {
+  white-space: nowrap;
+}
+.presence-table .flat-row-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.presence-table .avatar {
+  width: 28px;
+  height: 28px;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.history-row {
+  cursor: pointer;
+}
+.history-row:hover {
+  background: var(--surface-2);
+}
+.presence-expand-row td {
+  padding: 0;
+  background: var(--surface-2);
+}
+.screen-dash th {
+  text-align: start;
+  font:
+    600 10.5px/1 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.screen-dash td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.screen-dash tr:last-child td {
+  border-bottom: none;
+}
+.screen-dash .table-wrap {
+  overflow-x: auto;
+}
+.top-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-bottom: 6px;
+}
+.top-scroll[hidden] {
+  display: none;
+}
+/* شريط ماك يختفي لحد ما تسكرول، وشريط فوق الجدول فاضي ما بيبان أبداً —
+   نرسمه بأنفسنا عشان يظل ظاهر دايماً */
+.top-scroll::-webkit-scrollbar {
+  height: 12px;
+}
+.top-scroll::-webkit-scrollbar-track {
+  background: var(--surface-2);
+  border-radius: 999px;
+}
+.top-scroll::-webkit-scrollbar-thumb {
+  background: var(--text-faint);
+  border-radius: 999px;
+  border: 2px solid var(--surface-2);
+}
+.top-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+@supports (-moz-appearance: none) {
+  .top-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-faint) var(--surface-2);
+  }
+}
+.top-scroll-inner {
+  height: 1px;
+}
+.visits-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 18px;
+  margin-bottom: 10px;
+}
+.visits-range {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.visits-page-size {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.visits-seg {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.visits-seg button {
+  min-width: 44px;
+  min-height: 34px;
+  padding: 0 12px;
+  border: none;
+  border-inline-start: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font:
+    600 13px/1 var(--font-inter),
+    sans-serif;
+  cursor: pointer;
+}
+.visits-seg button:first-child {
+  border-inline-start: none;
+}
+.visits-seg button.on {
+  background: var(--surface-2);
+  color: var(--orange);
+}
+.visits-pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+.visits-pager button {
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font:
+    600 13px/1 var(--font-inter),
+    sans-serif;
+  cursor: pointer;
+}
+.visits-pager button.on {
+  border-color: var(--orange);
+  background: var(--surface-2);
+  color: var(--orange);
+}
+.visits-pager button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.visits-pager-gap {
+  color: var(--text-faint);
+}
+@media (max-width: 640px) {
+  .top-scroll {
+    display: none;
+  }
+}
+
+.accounts-panel {
+  margin-top: 20px;
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+  padding: 20px 0;
+}
+.accounts-panel h3 {
+  font:
+    700 15px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text);
+  margin: 0 0 14px;
+}
+.students-section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 28px 0 12px;
+}
+.students-section-label:first-of-type {
+  margin-top: 8px;
+}
+.students-section-label h4 {
+  font:
+    700 12px/1 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0;
+}
+.students-section-count {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--orange);
+  background: rgba(234, 105, 45, 0.12);
+  border-radius: 20px;
+  padding: 2px 9px;
+}
+.students-empty {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+}
+.status-filter-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.status-filter-chip {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font:
+    600 12px/1 var(--font-inter),
+    sans-serif;
+}
+.status-filter-chip.active {
+  border-color: var(--orange);
+  background: var(--surface-2);
+  color: var(--text);
+}
+.students-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.student-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: start;
+  font-family: inherit;
+}
+.student-card-clickable {
+  cursor: pointer;
+  width: 100%;
+  display: block;
+}
+.student-card-clickable:hover {
+  border-color: var(--orange);
+}
+.student-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.student-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font:
+    700 11.5px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+.student-avatar.on-track {
+  border-color: var(--success);
+}
+.student-avatar.watch {
+  border-color: var(--warning);
+}
+.student-avatar.inactive {
+  border-color: var(--danger);
+}
+.student-card-name {
+  font:
+    700 12.5px/1.3 var(--font-inter),
+    sans-serif;
+  color: var(--text);
+}
+.student-card-sub {
+  font-size: 10.5px;
+  color: var(--text-faint);
+  margin-top: 2px;
+}
+.student-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+}
+.student-followup-due {
+  margin-top: 6px;
+}
+.due-later {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.student-card-select {
+  width: 100%;
+  font-size: 11.5px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+.account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 12px 0 20px;
+}
+.account-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.account-form label {
+  font:
+    600 12.5px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text);
+}
+.account-form input,
+.account-form select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+.scope-checkboxes {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+}
+.scope-checkboxes legend {
+  font:
+    600 11px/1 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 12px 14px 6px;
+}
+.scope-list {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.scope-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font:
+    500 14px/1.2 var(--font-inter),
+    sans-serif;
+  text-align: start;
+  cursor: pointer;
+}
+.scope-list-item:hover:not(.selected) {
+  background: var(--surface-2);
+}
+.scope-list-item.selected {
+  background: var(--orange);
+  color: #fff;
+}
+.scope-check {
+  display: inline-flex;
+  width: 14px;
+  justify-content: center;
+  font-weight: 700;
+}
+.scope-edit-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.scope-edit-actions .btn-orange {
+  width: auto;
+  padding: 10px 20px;
+}
+.shift-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font:
+    600 11px/1.4 var(--font-inter),
+    sans-serif;
+  color: var(--text);
+}
+.shift-pill.unset {
+  color: var(--text-faint);
+}
+.shift-pill .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+}
+/* نفس القيم اللي كانت مكتوبة هنا بالضبط، بس صارت توكنز: اللونين يخدمون
+   صفحتين الحين، فما ينفع ينعرّفون بمكان واحد فقط */
+.shift-pill .dot.day {
+  background: var(--shift-day-dot);
+}
+.shift-pill .dot.night {
+  background: var(--shift-night-dot);
+}
+.shift-edit-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field-label {
+  font:
+    600 10.5px/1 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.toggle-row {
+  display: flex;
+  gap: 6px;
+}
+.toggle-row button {
+  flex: 1;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  padding: 8px;
+  border-radius: 6px;
+  font:
+    600 12px/1 var(--font-inter),
+    sans-serif;
+}
+.toggle-row button.selected {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+}
+.admin-note-field {
+  display: block;
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font:
+    400 12.5px/1.4 var(--font-inter),
+    sans-serif;
+  resize: vertical;
+}
+.admin-note-field::placeholder {
+  color: var(--text-faint);
+}
+.temp-password-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--success);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+.accounts-table td button {
+  margin-inline-end: 6px;
+}
+.accounts-table th.actions-col,
+.accounts-table td.cell-actions {
+  text-align: end;
+  white-space: nowrap;
+}
+.accounts-table td.cell-actions button {
+  margin-inline-end: 0;
+  margin-inline-start: 6px;
+  white-space: nowrap;
+}
+.accounts-table td.cell-actions button:first-child {
+  margin-inline-start: 0;
+}
+.kebab-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font:
+    700 14px/1 var(--font-inter),
+    sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.kebab-btn:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+.actions-modal {
+  max-width: 360px;
+}
+.actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.actions-list-item {
+  text-align: start;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 12px 14px;
+  border-radius: 8px;
+  font:
+    600 13px/1.3 var(--font-inter),
+    sans-serif;
+  width: 100%;
+}
+.actions-list-item:hover {
+  border-color: var(--orange);
+  background: var(--surface-2);
+}
+.actions-list-item.tone-danger {
+  color: var(--danger);
+}
+.actions-list-item.tone-danger:hover {
+  border-color: var(--danger);
+}
+.actions-list-item:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.accounts-table td.applications-actions-cell {
+  white-space: normal;
+  text-align: start;
+  vertical-align: middle;
+  padding-block: 10px;
+}
+.applications-actions-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.accounts-table td.applications-actions-cell button {
+  margin-inline-start: 0;
+}
+.mini-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 120px;
+}
+.mini-timeline-step {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.mini-timeline-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--text-faint);
+  opacity: 0.4;
+  align-self: center;
+}
+.mini-timeline-step.done .mini-timeline-dot {
+  background: var(--success);
+  opacity: 1;
+}
+.mini-timeline-label {
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+.mini-timeline-when {
+  color: var(--text);
+  white-space: nowrap;
+}
+.mini-timeline-step.pending {
+  opacity: 0.55;
+}
+.counselor-note {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.counselor-note p {
+  margin: 0;
+  font:
+    400 14px/1.5 var(--font-inter),
+    sans-serif;
+  color: var(--text);
+}
+.counselor-note-meta {
+  margin-top: 8px;
+  font:
+    500 12px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text-faint);
+}
+.counselor-deactivated {
+  color: var(--danger);
+  font-weight: 600;
+}
+.deactivated-tag {
+  margin-inline-start: 8px;
+}
+.view-visits-link {
+  font:
+    600 12.5px/1 var(--font-inter),
+    sans-serif;
+  color: var(--orange);
+  text-decoration: none;
+  border: 1px solid var(--orange);
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: inline-block;
+  white-space: nowrap;
+}
+.view-visits-link:hover {
+  background: rgba(234, 105, 45, 0.1);
+}
+.row-sub {
+  margin-top: 3px;
+  font:
+    500 11.5px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text-faint);
+}
+/* صار زر — نمسح شكل الزر عشان يظل نفس السطر الرمادي. المحدد المزدوج لازم:
+   .accounts-table button (كلاس + عنصر) يغلب كلاس لحاله ويرسم إطار وخلفية */
+.row-note,
+.accounts-table button.row-note {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  text-align: start;
+  margin-top: 3px;
+  font-size: 11px;
+  color: var(--text-faint);
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.row-note:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+/* اسم في جدول صار زر يفتح التفاصيل — بنفس شكل النص اللي كان مكانه، والفرق
+   الوحيد إطار التركيز لما توصله بـ Tab */
+.row-open-button,
+.accounts-table button.row-open-button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.row-open-button:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+.row-note.expanded,
+.accounts-table button.row-note.expanded {
+  white-space: normal;
+  max-width: 260px;
+  overflow: visible;
+  text-overflow: clip;
+}
+.row-note-more {
+  text-decoration: underline;
+  margin-inline-start: 2px;
+}
+.applications-status-editor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 14px;
+  padding: 14px 16px;
+  background: rgba(234, 105, 45, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+.applications-status-editor label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font:
+    600 11px/1 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  flex: 1 1 180px;
+  min-width: 0;
+}
+.applications-status-editor select,
+.applications-status-editor input {
+  min-width: 0;
+}
+.applications-status-editor-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+.inline-password-row td {
+  background: rgba(234, 105, 45, 0.06);
+}
+.inline-password-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.inline-password-label {
+  font:
+    600 10.5px/1 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.password-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex: 1;
+  min-width: 160px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font:
+    700 13px/1 ui-monospace,
+    monospace;
+  letter-spacing: 0.02em;
+}
+.password-box button {
+  border: none;
+  background: var(--orange);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font:
+    600 11px/1 var(--font-inter),
+    sans-serif;
+}
+.reassign-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.reassign-form label {
+  display: flex;
+  flex-direction: column;
+  font:
+    600 11px/1 var(--font-inter),
+    sans-serif;
+  gap: 4px;
+}
+.profile-missing-documents {
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  border-inline-start: 3px solid var(--danger);
+  background: rgba(178, 58, 58, 0.08);
+  border-radius: 6px;
+  font-size: 12.5px;
+  color: var(--danger);
+}
+.visits-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px 14px;
+  margin-bottom: 14px;
+}
+.visits-filter-row > label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font:
+    600 10.5px/1 var(--font-inter),
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+}
+.visits-filter-row input,
+.visits-filter-row select {
+  min-height: 38px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font:
+    500 13px/1 var(--font-inter),
+    sans-serif;
+}
+.visits-filter-row input:disabled,
+.visits-filter-row select:disabled {
+  opacity: 0.5;
+}
+.visits-search {
+  flex: 1;
+  min-width: 230px;
+}
+.visits-search-box {
+  position: relative;
+  display: flex;
+}
+.visits-search-box input {
+  width: 100%;
+  padding-inline-end: 34px;
+}
+.visits-search-box input:focus-visible {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px var(--surface-2);
+}
+.visits-search-box button {
+  position: absolute;
+  inset-inline-end: 2px;
+  top: 2px;
+  bottom: 2px;
+  width: 30px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.visits-search-empty {
+  margin: 14px 0 0;
+  padding: 18px;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.visits-search-empty span {
+  display: block;
+  margin-top: 4px;
+  font-size: 11.5px;
+  color: var(--text-faint);
+}
+.supervision-state {
+  padding: 20px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-align: center;
+}
+.supervision-state b {
+  display: block;
+  font:
+    600 14px/1.3 var(--font-inter),
+    sans-serif;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.supervision-state p {
+  margin: 0 0 12px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+.supervision-state .btn-orange {
+  display: inline-block;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: var(--orange);
+  color: #fff;
+  font:
+    700 12.5px/1 var(--font-inter),
+    sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+.supervision-stale {
+  margin: 0 0 12px;
+  font-size: 12px;
+  color: var(--warning);
+}
+.scope-count {
+  font:
+    600 11.5px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text-muted);
+  border-bottom: 1px dotted var(--border);
+  cursor: help;
+}
+.scope-count.none {
+  color: var(--danger);
+  border-bottom-color: var(--danger);
+}
+.last-seen {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.last-seen.stale {
+  color: var(--warning);
+  font-weight: 600;
+}
+/* الحسابات المعطّلة تنزل تحت وتبهت، عشان الفريق الشغّال يقرأ ككتلة وحدة */
+.accounts-table tr.account-inactive td {
+  opacity: 0.55;
+}
+
+/* الشفت جنب اسم المستشار بصف الزيارة — نفس حبة صفحة الحسابات: نفس التدوير
+   ونفس اللونين، بس أصغر شوي عشان تقعد بنفس سطر الاسم وزر الإلغاء. اللون
+   يوصل للكلمة والخلفية مو للنقطة بس: نقطة ٥px ما تكفي تحمل الإشارة كاملة */
+.counselor-shift {
+  display: inline-flex;
+  align-items: center;
+  gap: 4.5px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 2.5px 8px;
+  font:
+    600 10px/1.4 var(--font-inter),
+    sans-serif;
+  white-space: nowrap;
+  flex: none;
+}
+.counselor-shift .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  flex: none;
+}
+.counselor-shift.day {
+  background: var(--shift-day-bg);
+  border-color: var(--shift-day-border);
+  color: var(--shift-day-fg);
+}
+.counselor-shift.day .dot {
+  background: var(--shift-day-dot);
+}
+.counselor-shift.night {
+  background: var(--shift-night-bg);
+  border-color: var(--shift-night-border);
+  color: var(--shift-night-fg);
+}
+.counselor-shift.night .dot {
+  background: var(--shift-night-dot);
+}
+
+/* البحث انقطع عند سقف الصفوف — تحذير هادئ، مو خطأ: النتائج اللي ظهرت صحيحة،
+   بس ناقصة. نفس لون التنبيه حق باقي الرسائل التحذيرية بالجداول */
+.visits-search-truncated {
+  margin: 8px 0 0;
+  font:
+    600 12px/1.4 var(--font-inter),
+    sans-serif;
+  color: var(--warning);
+}

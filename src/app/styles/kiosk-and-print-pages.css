@@ -1,0 +1,322 @@
+/* kiosk-and-print-pages.css — QR posters (front-desk + combined apply), their print styling, and the kiosk queue-lock screen */
+
+/* ---- Front-desk QR poster ---- */
+.qr-poster-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 32px 16px;
+  background: var(--bg);
+}
+.qr-poster {
+  width: min(420px, 100%);
+  aspect-ratio: 210 / 297;
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 90% at 50% -10%, rgba(234, 105, 45, 0.22), transparent 55%),
+    linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 7% 8% 6%;
+  color: #f2f5fa;
+  box-shadow:
+    0 18px 44px rgba(10, 20, 35, 0.28),
+    0 2px 8px rgba(10, 20, 35, 0.14);
+}
+.qr-poster-mark {
+  width: 72px;
+  height: 48px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 auto;
+}
+.qr-poster-mark span,
+.apply-qr-poster-mark span {
+  display: block;
+  width: 14px;
+  border-radius: 5px 5px 0 0;
+  background: var(--orange);
+}
+.qr-poster-mark span:nth-child(1),
+.apply-qr-poster-mark span:nth-child(1) {
+  height: 44px;
+}
+.qr-poster-mark span:nth-child(2),
+.apply-qr-poster-mark span:nth-child(2) {
+  height: 32px;
+  opacity: 0.8;
+}
+.qr-poster-mark span:nth-child(3),
+.apply-qr-poster-mark span:nth-child(3) {
+  height: 20px;
+  opacity: 0.6;
+}
+.apply-qr-poster-mark {
+  width: 54px;
+  height: 38px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 4px;
+}
+.apply-qr-poster-mark span {
+  width: 10px;
+}
+.qr-poster-headline {
+  font:
+    900 clamp(22px, 5vw, 30px)/1.15 var(--font-inter),
+    sans-serif;
+  margin: 9% 0 4px;
+  letter-spacing: -0.01em;
+}
+.qr-poster-sub {
+  font-size: 13px;
+  color: #b7c2d6;
+  margin: 0 0 8%;
+}
+.qr-poster-ar {
+  display: block;
+  margin-top: 3px;
+  direction: rtl;
+}
+.qr-poster-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 5%;
+  width: 62%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+.qr-poster-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.qr-poster-caption {
+  margin-top: 6%;
+  font:
+    700 12px/1.4 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.qr-poster-caption .qr-poster-ar {
+  color: #b7c2d6;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+.qr-poster-print-btn {
+  padding: 12px 28px;
+}
+
+@media print {
+  .app-sidebar,
+  .toggle-bar,
+  .sidebar-toggle-btn,
+  .qr-poster-print-btn {
+    display: none !important;
+  }
+  .app-content {
+    padding-inline-start: 0 !important;
+  }
+  .qr-poster-page {
+    min-height: 0;
+    padding: 0;
+  }
+  .qr-poster {
+    box-shadow: none;
+    width: 100%;
+    aspect-ratio: auto;
+  }
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+}
+
+/* ---- Combined visa/exam apply QR poster ---- */
+.apply-qr-poster-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 32px 16px;
+  background: var(--bg);
+}
+.apply-qr-poster {
+  width: min(420px, 100%);
+  aspect-ratio: 210 / 297;
+  border-radius: 8px;
+  background: #fff;
+  color: #0f2039;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 18px 44px rgba(10, 20, 35, 0.22),
+    0 2px 8px rgba(10, 20, 35, 0.1);
+}
+.apply-qr-poster-header {
+  display: flex;
+  align-items: center;
+  gap: 4%;
+  padding: 8% 8% 0;
+}
+.apply-qr-poster-line {
+  flex: 1;
+  height: 1px;
+  background: var(--orange);
+}
+.apply-qr-poster-kicker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  text-align: center;
+  font:
+    800 10px/1 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin: 7% 0 0;
+}
+.apply-qr-poster-kicker-ar {
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #566179;
+  direction: rtl;
+}
+.apply-qr-poster-qr {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5% 14%;
+}
+.apply-qr-poster-qr img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.apply-qr-poster-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0 9%;
+  padding: 5% 0 8%;
+  border-top: 1px solid #eee;
+  font:
+    700 10.5px/1.4 var(--font-inter),
+    sans-serif;
+}
+.apply-qr-poster-footer-ar {
+  color: #566179;
+  direction: rtl;
+}
+.apply-qr-poster-print-btn {
+  padding: 12px 28px;
+}
+
+@media print {
+  .apply-qr-poster-page {
+    min-height: 0;
+    padding: 0;
+  }
+  .apply-qr-poster {
+    box-shadow: none;
+    width: 100%;
+    aspect-ratio: auto;
+  }
+}
+
+/* ---- Locked queue-position screen (walk-in kiosk) ---- */
+.queue-lock-screen {
+  width: 100%;
+  max-width: 320px;
+  margin: 16px auto 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px 24px;
+  text-align: center;
+}
+.queue-lock-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(240, 130, 76, 0.12);
+  border: 1px solid rgba(240, 130, 76, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  font-size: 22px;
+}
+.queue-lock-num {
+  font:
+    800 44px/1 var(--font-inter),
+    sans-serif;
+  color: var(--orange);
+  margin-bottom: 4px;
+}
+.queue-lock-sub {
+  font-size: 12.5px;
+  color: var(--text-faint);
+  margin-bottom: 22px;
+}
+.queue-lock-counselor {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 20px;
+}
+.queue-lock-counselor .k {
+  font-size: 10px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.queue-lock-counselor .v {
+  font:
+    700 14px/1 var(--font-inter),
+    sans-serif;
+  color: var(--text);
+}
+.queue-lock-warn {
+  font-size: 11.5px;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* متى يبدأ دوام مستشار الزائر — خدمة له، مو معلومة داخلية. ولا كلمة عن الغياب */
+.queue-lock-shift {
+  display: block;
+  margin-top: 6px;
+  font:
+    600 13px/1.4 var(--font-inter),
+    sans-serif;
+  color: var(--text-muted);
+}

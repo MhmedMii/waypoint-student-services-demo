@@ -1,0 +1,112 @@
+/* login-page.css — the login screen only */
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  padding: 24px;
+  /* يتبع نفس ألوان الوضع الفاتح/الغامق المستخدمة بباقي الصفحات */
+  background: var(--bg);
+}
+.login-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-logo svg {
+  width: min(96px, 30vw);
+  height: auto;
+  display: block;
+}
+.login-card {
+  width: 100%;
+  max-width: 320px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.login-card label {
+  font:
+    600 11px/1 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 14px 0 6px;
+}
+.login-card label:first-child {
+  margin-top: 0;
+}
+.login-card input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+}
+.login-card input::placeholder {
+  color: var(--text-faint);
+}
+.login-card .btn-orange {
+  margin-top: 20px;
+}
+.login-note {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  text-decoration: underline;
+}
+.login-footer {
+  /* عنصر واحد بالـ flex الرئيسي (يوخذ فراغ 48px الطبيعي) وبداخله
+     التاقلاين وحقوق النشر بفراغ ضيق خاص فيهم بس */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.login-tagline {
+  text-align: center;
+  font:
+    600 13px/1.4 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.login-copyright {
+  text-align: center;
+  font:
+    500 11px/1.4 var(--font-inter),
+    sans-serif;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+}
+.err {
+  color: var(--danger);
+  font-size: 12.5px;
+  margin: 4px 0 0;
+}
+.duplicate-override-link {
+  display: block;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 4px 0 8px;
+  color: var(--orange);
+  font-size: 12.5px;
+  text-decoration: underline;
+  text-align: left;
+  cursor: pointer;
+}
+.duplicate-override-link:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
