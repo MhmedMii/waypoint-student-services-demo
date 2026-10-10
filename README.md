@@ -26,13 +26,13 @@ The public demo allows visitors to explore different workflows without accessing
 
 ### Main Workspaces
 
-| Workspace | Purpose |
-|---|---|
-| Front Desk | Register fictional student visits and service enquiries |
-| Counselor Desk | Manage assigned visits, sessions, breaks, and follow-ups |
-| Visa & Exam Services | Create and track simulated applications |
-| Management | Review fictional accounts, activity logs, team availability, and reports |
-| Applicant Experience | Submit sample applications and review their status |
+| Workspace            | Purpose                                                                  |
+| -------------------- | ------------------------------------------------------------------------ |
+| Front Desk           | Register fictional student visits and service enquiries                  |
+| Counselor Desk       | Manage assigned visits, sessions, breaks, and follow-ups                 |
+| Visa & Exam Services | Create and track simulated applications                                  |
+| Management           | Review fictional accounts, activity logs, team availability, and reports |
+| Applicant Experience | Submit sample applications and review their status                       |
 
 ---
 
@@ -134,18 +134,18 @@ The public implementation includes:
 
 ## 🛠️ Technology & Architecture
 
-| Area | Technology |
-|---|---|
-| Framework | Next.js |
-| Frontend | React |
-| Language | TypeScript |
-| Styling | Plain CSS and locally bundled fonts |
-| Icons | Phosphor |
-| Demo persistence | Browser `localStorage` |
-| Backend reference | PostgreSQL repositories and service interfaces |
-| Unit and component tests | Vitest and Testing Library |
-| Browser testing | Playwright |
-| Hosting | Vercel |
+| Area                     | Technology                                     |
+| ------------------------ | ---------------------------------------------- |
+| Framework                | Next.js                                        |
+| Frontend                 | React                                          |
+| Language                 | TypeScript                                     |
+| Styling                  | Plain CSS and locally bundled fonts            |
+| Icons                    | Phosphor                                       |
+| Demo persistence         | Browser `localStorage`                         |
+| Backend reference        | PostgreSQL repositories and service interfaces |
+| Unit and component tests | Vitest and Testing Library                     |
+| Browser testing          | Playwright                                     |
+| Hosting                  | Vercel                                         |
 
 ### Architecture Overview
 
@@ -290,22 +290,22 @@ This separation allows visitors to evaluate the application's interface and busi
 
 ## 🧭 Demo Routes Reference
 
-| Route | Workspace |
-|---|---|
-| `/`, `/admin` | Workspace overview |
-| `/login` | Demo welcome and perspective selection |
-| `/intake` | Front-desk registration |
-| `/admin/visits` | Student visits |
-| `/counselor` | Counselor sessions and breaks |
-| `/counselor/students` | Assigned student visits |
-| `/visas`, `/exams` | Service application lists |
-| `/apply` | Fictional applicant flow |
-| `/apply/status/WP-2401` | Example application tracking page |
-| `/admin/supervision`, `/admin/online-now` | Simulated team overview |
-| `/admin/accounts` | Fictional account management |
-| `/admin/activity`, `/admin/online-history` | Demo event timeline |
-| `/admin/qr-poster`, `/apply/qr-poster` | Printable demo QR posters |
-| `/api/health` | Demo health response |
+| Route                                      | Workspace                              |
+| ------------------------------------------ | -------------------------------------- |
+| `/`, `/admin`                              | Workspace overview                     |
+| `/login`                                   | Demo welcome and perspective selection |
+| `/intake`                                  | Front-desk registration                |
+| `/admin/visits`                            | Student visits                         |
+| `/counselor`                               | Counselor sessions and breaks          |
+| `/counselor/students`                      | Assigned student visits                |
+| `/visas`, `/exams`                         | Service application lists              |
+| `/apply`                                   | Fictional applicant flow               |
+| `/apply/status/WP-2401`                    | Example application tracking page      |
+| `/admin/supervision`, `/admin/online-now`  | Simulated team overview                |
+| `/admin/accounts`                          | Fictional account management           |
+| `/admin/activity`, `/admin/online-history` | Demo event timeline                    |
+| `/admin/qr-poster`, `/apply/qr-poster`     | Printable demo QR posters              |
+| `/api/health`                              | Demo health response                   |
 
 ---
 
