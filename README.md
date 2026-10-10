@@ -1,86 +1,185 @@
-# Waypoint — Walk-In Follow-Up
+# Waypoint — Student Services Platform | Live Demo Version
 
-A bilingual walk-in system for education consultancy teams. Register a student's visit, route them to a counselor covering their destination, and follow the visit through to completion or a follow-up. The workspace also includes visa and exam applications.
+**Bilingual Student Services Management | Software Engineering Portfolio Project**
 
-Built by [MhmedMii](https://github.com/MhmedMii).
+Waypoint is a bilingual student-services application designed to support education consultancy operations, from registering student visits and assigning counselors to managing follow-ups, visa applications, and exam services.
 
-## 🚀 Live demo
+The public demo showcases operational workflows, typed business logic, management screens, and bilingual interfaces using fictional data.
 
-**[Try Waypoint](https://waypoint-student-services-demo.vercel.app)** — no login required.
+**[🌐 View Live Demo](https://waypoint-student-services-demo.vercel.app/)** · **[💻 View Source Code](https://github.com/MhmedMii/waypoint-student-services-demo)**
 
-> All records and sample documents are fictional. Changes stay in your browser, and **Reset demo** restores the starter data. Payments and document uploads are simulated.
+**Tech Stack:** Next.js · React · TypeScript · PostgreSQL (retained backend reference) · Vitest · Playwright · Vercel
+
+> **Live Demo Version:** All student records, sample documents, and staff profiles are fictional. Demo changes are stored in the visitor's browser, and payments and document uploads are simulated. Production database connections and services are disabled.
 
 ![Workspace overview showing fictional visits and counselor activity](docs/screenshots/overview.png)
 
-## ✨ What it does
+---
 
-- **Kiosk intake:** register a fictional first visit, follow-up, or visa/service visit.
-- **Routing:** assign new visits to active counselors who cover the selected destination.
-- **Counselor desk:** manage a queue, run session and break timers, and record outcomes or follow-up dates.
-- **Visas and exams:** submit sample applications, review their progress, and check their status.
-- **Management:** explore fictional accounts, team availability, activity logs, and Excel reports.
-- **Arabic and English:** switch languages, with right-to-left layouts, light/dark themes, and mobile support.
+## 📌 Project Overview
 
-## Try the workflows
+Waypoint demonstrates an operational student-services platform for education consultancy teams.
 
-### Register and serve a student
+The application brings together student intake, counselor assignments, visit tracking, follow-ups, visa and exam applications, and management reporting in one workspace.
 
-1. Open [the front desk](https://waypoint-student-services-demo.vercel.app/intake).
-2. Choose a generated identity and a visit type. For a first visit, choose a study destination.
-3. Register the demo visit, then open the counselor desk.
-4. Select the assigned demo counselor and click **Start next visit**.
-5. Finish the session as completed or requiring a follow-up. The next session starts only after another explicit click.
-6. Check the visit list and activity timeline to see the resulting changes.
+The public demo allows visitors to explore different workflows without accessing a production environment.
 
-### Submit and review an application
+### Main Workspaces
 
-1. Open [the applicant experience](https://waypoint-student-services-demo.vercel.app/apply).
-2. Choose a visa or exam service, then a fictional student identity.
-3. Attach generated sample documents and submit.
-4. Open the tracking link or inspect the application in the staff view.
-5. Move it through the allowed review stages and try **Simulate payment**.
+| Workspace | Purpose |
+|---|---|
+| Front Desk | Register fictional student visits and service enquiries |
+| Counselor Desk | Manage assigned visits, sessions, breaks, and follow-ups |
+| Visa & Exam Services | Create and track simulated applications |
+| Management | Review fictional accounts, activity logs, team availability, and reports |
+| Applicant Experience | Submit sample applications and review their status |
 
-Use **Reset demo** to restore the starter records at any time. Changes persist when reloading the same browser, but they are not shared with other visitors or devices.
+---
 
-### Routes
+## ✨ Key Features
 
-| **Route**                                  | **View**                               |
-| ------------------------------------------ | -------------------------------------- |
-| `/`, `/admin`                              | Workspace overview                     |
-| `/login`                                   | Demo welcome and perspective selection |
-| `/intake`                                  | Front-desk registration                |
-| `/admin/visits`                            | Student visits                         |
-| `/counselor`                               | Counselor sessions and breaks          |
-| `/counselor/students`                      | Assigned student visits                |
-| `/visas`, `/exams`                         | Service application lists              |
-| `/apply`                                   | Fictional applicant flow               |
-| `/apply/status/WP-2401`                    | Example application tracking page      |
-| `/admin/supervision`, `/admin/online-now`  | Simulated team overview                |
-| `/admin/accounts`                          | Fictional account management           |
-| `/admin/activity`, `/admin/online-history` | Demo event timeline                    |
-| `/admin/qr-poster`, `/apply/qr-poster`     | Printable demo QR posters              |
-| `/api/health`                              | Demo health response                   |
+### Student Intake & Counselor Assignment
 
-The retained `/forgot-password` and `/reset-password` routes show the demo welcome view. Real password recovery is not active.
+- Register fictional first-time, follow-up, and visa/service visits.
+- Select a study destination for first-time visits.
+- Assign students to active counselors who cover their selected destination.
+- Record and track visit progression.
 
-## 🎨 Design
+### Counselor Workflow Management
 
-A connected-path logo, deep teal and ivory palette, and clear tables keep the workspace focused on the next action. Manrope supports the English interface; Noto Sans Arabic supports Arabic.
+- Manage counselor queues.
+- Start sessions explicitly.
+- Track session and break timers.
+- Record completed visits and follow-up requirements.
+- Schedule follow-up dates.
+- Review assigned student records.
 
-The active design tokens and responsive styles live in [src/demo/demo.css](src/demo/demo.css).
+### Visa & Exam Applications
 
-## 🛠️ Tech stack
+- Submit simulated visa and exam applications.
+- Attach generated sample documents.
+- Track application progress.
+- Move applications through allowed review stages.
+- Simulate payments.
 
-- **App:** Next.js, React, TypeScript
-- **Demo data:** browser localStorage
-- **Backend reference:** PostgreSQL repositories and service interfaces
-- **Styling:** plain CSS, locally bundled fonts, Phosphor icons
-- **Tests:** Vitest, Testing Library, Playwright
-- **Hosting:** Vercel, connected to this GitHub repository
+### Management & Reporting
 
-## 🏗️ Architecture and code layout
+- Explore fictional staff accounts.
+- Review counselor availability and activity.
+- Inspect application and visit records.
+- View activity timelines.
+- Generate Excel reports.
 
-Business rules and use cases are separated from database and service implementations. The public demo runs its workflows through typed state transitions in `src/demo`; the retained backend shows the original layered architecture.
+### Bilingual & Responsive Experience
+
+- English and Arabic interfaces.
+- Right-to-left layouts.
+- Light and dark themes.
+- Responsive desktop and mobile layouts.
+
+---
+
+## 🔄 How It Works
+
+### Workflow 1 — Register and Serve a Student
+
+**Student registration → Counselor assignment → Queue → Session → Completion or Follow-up**
+
+1. Open the [Front Desk](https://waypoint-student-services-demo.vercel.app/intake).
+2. Choose a fictional student identity and visit type.
+3. For a first-time visit, select a study destination.
+4. Register the visit and open the counselor workspace.
+5. Select the assigned counselor and click **Start next visit**.
+6. Complete the session or mark it as requiring a follow-up.
+7. Review the visit list and activity timeline.
+
+The next counselor session starts only after an explicit action.
+
+### Workflow 2 — Visa or Exam Application
+
+**Select service → Submit application → Review → Update status → Simulate payment**
+
+1. Open the [Applicant Experience](https://waypoint-student-services-demo.vercel.app/apply).
+2. Choose a visa or exam service.
+3. Select a fictional student identity.
+4. Attach generated sample documents and submit the application.
+5. Open the application tracking page or staff workspace.
+6. Update the application through the allowed review stages.
+7. Try the simulated payment feature.
+
+Use **Reset demo** to restore the starter records.
+
+Changes survive page reloads in the same browser but are not shared across browsers or devices.
+
+---
+
+## 👨‍💻 My Contribution
+
+**Role: Software Developer**
+
+This project demonstrates software engineering work across operational workflows, application state, user interfaces, and testing.
+
+The public implementation includes:
+
+- Building student intake and service-management interfaces.
+- Implementing counselor assignment and queue workflows.
+- Developing visit and application state transitions.
+- Supporting bilingual interfaces and responsive layouts.
+- Organizing domain logic separately from application and infrastructure concerns.
+- Implementing fictional demo data and browser-based persistence.
+- Maintaining automated checks and browser workflow tests.
+- Separating the public demonstration from production services and database connections.
+
+---
+
+## 🛠️ Technology & Architecture
+
+| Area | Technology |
+|---|---|
+| Framework | Next.js |
+| Frontend | React |
+| Language | TypeScript |
+| Styling | Plain CSS and locally bundled fonts |
+| Icons | Phosphor |
+| Demo persistence | Browser `localStorage` |
+| Backend reference | PostgreSQL repositories and service interfaces |
+| Unit and component tests | Vitest and Testing Library |
+| Browser testing | Playwright |
+| Hosting | Vercel |
+
+### Architecture Overview
+
+Waypoint separates business rules and use cases from infrastructure and database implementations.
+
+The public demonstration uses typed state transitions in `src/demo` to manage student visits, counselor sessions, applications, and simulated services.
+
+Its retained backend reference documents the layered architecture but does not connect the public demo to a production database.
+
+### Application Layers
+
+**Presentation:** Next.js pages and React components render operational workspaces.
+
+**Domain:** Business rules, validation, counselor routing, and workflow transitions.
+
+**Application:** Use cases and repository/service interfaces.
+
+**Adapters:** Retained PostgreSQL repository implementations.
+
+**Infrastructure:** Authentication, encryption, and disabled production connections.
+
+**Demo Layer:** Fictional data, browser-local persistence, and simulated workflows.
+
+### Interface Design
+
+The interface uses a connected-path logo, deep teal and ivory colors, and practical tables and forms.
+
+Manrope supports the English interface, and Noto Sans Arabic supports Arabic content.
+
+Active design tokens and responsive styles are maintained in [`src/demo/demo.css`](src/demo/demo.css).
+
+---
+
+## 📁 Project Structure
 
 ```text
 src/
@@ -95,20 +194,48 @@ src/
 └── lib/              # Safe browser-storage helpers
 ```
 
-Start with [DemoApp.tsx](src/demo/DemoApp.tsx) for screen composition, [DemoProvider.tsx](src/demo/DemoProvider.tsx) for persistence, and [model.ts](src/demo/model.ts) for workflow rules.
+### Important Files
 
-## ▶️ Run locally
+- [`DemoApp.tsx`](src/demo/DemoApp.tsx) — Screen composition.
+- [`DemoProvider.tsx`](src/demo/DemoProvider.tsx) — Browser persistence and demo state.
+- [`model.ts`](src/demo/model.ts) — Workflow actions and business rules.
 
-Use Node.js 22.12 or newer. After cloning the repository:
+---
+
+## ▶️ Run Locally
+
+**Requirement:** Node.js 22.12 or newer.
+
+Clone the repository:
+
+```bash
+git clone https://github.com/MhmedMii/waypoint-student-services-demo.git
+cd waypoint-student-services-demo
+```
+
+Install dependencies:
 
 ```bash
 npm ci
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-Open [localhost:3000](http://localhost:3000). No database setup or environment file is needed. Production API paths are blocked, and the demo cannot connect to the original database.
+Open [http://localhost:3000](http://localhost:3000).
 
-## 🧪 Tests and checks
+No database, environment file, or production credentials are required.
+
+Production API paths are blocked, and the public demo cannot connect to the original database.
+
+---
+
+## 🧪 Testing & Continuous Integration
+
+Waypoint includes automated checks for application behavior, TypeScript, formatting, and public-demo isolation.
 
 ```bash
 npm test
@@ -117,12 +244,77 @@ npm run format:check
 npm run demo:check
 ```
 
-For browser tests, install Chromium with `npx playwright install chromium`, then run `npm run test:e2e`.
+### Browser Testing
 
-GitHub Actions runs validation and browser tests on pushes and pull requests. Pushes to `main` deploy automatically to the separate Vercel demo project.
+Install Chromium:
 
-## 🔒 Copyright
+```bash
+npx playwright install chromium
+```
 
-Copyright © 2026 [MhmedMii](https://github.com/MhmedMii). All rights reserved.
+Run the browser tests:
 
-This repository is publicly available as a portfolio demonstration.
+```bash
+npm run test:e2e
+```
+
+GitHub Actions is configured to run validation and browser tests on pushes and pull requests.
+
+Pushes to the `main` branch trigger deployment to the separate Vercel demo project.
+
+The presence of automated scripts does not independently confirm that every check currently passes.
+
+---
+
+## 🔒 Demo Limitations & Privacy
+
+Waypoint is a **public live portfolio demonstration**, not the production student-services application.
+
+Important limitations:
+
+- Student records and identities are fictional.
+- Staff accounts and team data are fictional.
+- Sample documents are generated for the demonstration.
+- Document uploads and payments are simulated.
+- Demo changes are stored in the visitor's browser.
+- Browser state is not shared between visitors or devices.
+- Reset demo restores the starting data.
+- Production database connections and services are disabled.
+- Real password recovery is not active.
+
+The retained `/forgot-password` and `/reset-password` routes display the demo welcome view.
+
+This separation allows visitors to evaluate the application's interface and business workflows without accessing sensitive production data or services.
+
+---
+
+## 🧭 Demo Routes Reference
+
+| Route | Workspace |
+|---|---|
+| `/`, `/admin` | Workspace overview |
+| `/login` | Demo welcome and perspective selection |
+| `/intake` | Front-desk registration |
+| `/admin/visits` | Student visits |
+| `/counselor` | Counselor sessions and breaks |
+| `/counselor/students` | Assigned student visits |
+| `/visas`, `/exams` | Service application lists |
+| `/apply` | Fictional applicant flow |
+| `/apply/status/WP-2401` | Example application tracking page |
+| `/admin/supervision`, `/admin/online-now` | Simulated team overview |
+| `/admin/accounts` | Fictional account management |
+| `/admin/activity`, `/admin/online-history` | Demo event timeline |
+| `/admin/qr-poster`, `/apply/qr-poster` | Printable demo QR posters |
+| `/api/health` | Demo health response |
+
+---
+
+## 👨‍💻 Author
+
+**ENG. Mohammed Mahmoud**  
+AI & Software Engineer
+
+- **GitHub:** [@MhmedMii](https://github.com/MhmedMii)
+- **Portfolio:** [View Portfolio](https://mohammed-mahmoud-portfolio.vercel.app/)
+
+Built as a portfolio project to demonstrate Next.js, React, and TypeScript development, bilingual Arabic/English interfaces, counselor assignment logic, student-service workflows, and layered application architecture. The live demo also showcases typed state management, browser-based persistence, responsive layouts, and automated testing using Vitest and Playwright.
